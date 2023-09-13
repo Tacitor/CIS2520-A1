@@ -1,13 +1,10 @@
 Total word count 170
 Tally loaded
 Hapax legomena from file 'jabberwocky.txt':
-  Hapax legomena of length 1:
     O
-  Hapax legomena of length 2:
     to
     of
     by
-  Hapax legomena of length 3:
     joy
     day
     boy
@@ -16,7 +13,6 @@ Hapax legomena from file 'jabberwocky.txt':
     One
     foe
     son
-  Hapax legomena of length 4:
     arms
     Come
     thou
@@ -40,7 +36,6 @@ Hapax legomena from file 'jabberwocky.txt':
     bite
     jaws
     from
-  Hapax legomena of length 5:
     Calay
     slain
     blade
@@ -49,7 +44,6 @@ Hapax legomena from file 'jabberwocky.txt':
     catch
     claws
     Lewis
-  Hapax legomena of length 6:
     Calooh
     tulgey
     uffish
@@ -57,23 +51,17 @@ Hapax legomena from file 'jabberwocky.txt':
     rested
     sought
     jubjub
-  Hapax legomena of length 7:
     beamish
     burbled
     tum-tum
     manxome
     Carroll
     Through
-  Hapax legomena of length 8:
     chortled
     frabjous
     frumious
-  Hapax legomena of length 9:
     whiffling
-  Hapax legomena of length 10:
     galumphing
-  Hapax legomena of length 12:
     snickersnack
     bandersnatch
-  Hapax legomena of length 13:
     Looking-Glass
