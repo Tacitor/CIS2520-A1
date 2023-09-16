@@ -88,7 +88,7 @@ void usage()
 	fprintf(stderr, "       : If no -l option is given, all hapax legomena are printed.\n");
 	fprintf(stderr, "\n");
 	fprintf(stderr, "Sample command line:\n");
-	fprintf(stderr, "    hapax -l5 smalldata.txt");
+	fprintf(stderr, "    hapax -l 5 smalldata.txt");
 	fprintf(stderr, "\n");
 	fprintf(stderr, "This example would print all words of length 5 that exist in the\n");
 	fprintf(stderr, "file \"smalldata.txt\".\n");
@@ -116,7 +116,25 @@ int main(int argc, char **argv)
 	{
 		if (argv[i][0] == '-')
 		{
-			// TODO: Put your code to process the command line options here
+			// check for a -d
+			if (argv[i][1] == 'd')
+			{
+				shouldPrintData = 1;
+			}
+			else if (argv[i][1] == 'h') // check for a -h
+			{
+				usage();
+			}
+			else if (argv[i][1] == 'l') // check for a -h
+			{
+				// grab and set the printHapaxLength
+				printHapaxLength = atoi(argv[i + 1]); // no need to error check the string input
+				// this is because any failed conversion will default to 0. Then the program will print all
+				// Hapax legomena of length 0, which is a safe fail condition.
+
+				// then increment i by 1 so that the else condition in the next block does not run on the value
+				i++;
+			}
 		}
 		else
 		{
@@ -150,6 +168,11 @@ int main(int argc, char **argv)
 			// TODO: clean up any memory that we have allocated in this loop
 		}
 	}
+
+	// debug the acceptance of command line args
+	//  printf("shouldPrintData: %d\n", shouldPrintData);
+	printf("printHapaxLength: %d\n", printHapaxLength);
+	// printf("didProcessing: %d\n", didProcessing);
 
 	if (!didProcessing)
 	{
