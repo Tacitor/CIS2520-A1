@@ -27,17 +27,16 @@ int tallyWordsInFile(char *filename, LLNode **wordLists, int maxLen)
 	char *aWord = NULL;
 	// add any more variables that you need
 
-
 	// create the extractor and open the file
 	wordExtractor = weCreateExtractor(filename, maxLen);
 
-	if (wordExtractor == NULL) {
+	if (wordExtractor == NULL)
+	{
 		fprintf(stderr, "Failed creating extractor for '%s'\n", filename);
 		return 0;
 	}
 
 	/** TODO: ensure that all of the word list heads are NULL */
-
 
 	// read each word from the file using the WordExtractor,
 	// and for each tally how often it has been used in
@@ -48,7 +47,8 @@ int tallyWordsInFile(char *filename, LLNode **wordLists, int maxLen)
 
 	int totalWordCount = 0;
 
-	while (weHasMoreWords(wordExtractor)) {
+	while (weHasMoreWords(wordExtractor))
+	{
 		aWord = weGetNextWord(wordExtractor);
 		totalWordCount++;
 
@@ -76,17 +76,11 @@ updateWordInTallyList(LLNode **wordListHeads, int maxLen, char *word)
 	/* TODO: look up the word in the correct list to see
 	 * if we have already seen it */
 
-
-
 	/* TODO: if the word is in the list, then update the tally
 	 * in the node and we are done so return success */
-	
-
 
 	/** TODO: otherwise add it to the list */
-
 
 	/** return success if no error */
 	return 1;
 }
-

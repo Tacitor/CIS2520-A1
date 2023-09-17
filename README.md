@@ -6,7 +6,7 @@
 
 ## Resource Used for Assistance
 
-    - None yet
+    - Made use of example code from words_main.c provided in the repository for this assignment
 
 ## State of Implementation
 
