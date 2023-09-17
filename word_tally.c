@@ -71,7 +71,7 @@ int tallyWordsInFile(char *filename, LLNode **wordLists, int maxLen)
 }
 
 /**
- * TODO: Either update the tally in the list, or add it to the list
+ * Either update the tally in the list, or add it to the list
  */
 static int
 updateWordInTallyList(LLNode **wordListHeads, int maxLen, char *word)
@@ -107,10 +107,11 @@ updateWordInTallyList(LLNode **wordListHeads, int maxLen, char *word)
 		// so increment the value (number of sightings of the word)
 		wordList->value++;
 	}
-	else 
+	else
 	{
-		/** TODO: otherwise add it to the list */
-		// TODO - Create the start of a new list / also add onto an existing list
+		// create a new node for the new word. Since it is a new word set the occourence to 1
+		// then prepend this new node to the top of the LL
+		wordListHeads[strlen(word)] = llPrepend(wordListHeads[strlen(word)], llNewNode(strdup(word), 1));
 	}
 
 	/** return success if no error */

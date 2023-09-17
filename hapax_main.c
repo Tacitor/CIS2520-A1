@@ -65,8 +65,34 @@ int printData(char *filename, LLNode *wordListHeads[], int maxLen)
 int printHapax(char *filename, LLNode *wordListHeads[],
 			   int maxLen, int hapaxLength)
 {
-	// Add your code here
+	LLNode *node;
+	int i;
 
+	printf("Hapax legomena from file '%s':\n", filename);
+
+	/**
+	 * For each length, if the list is not null, print out
+	 * the hapax legomena in the list
+	 */
+	for (i = 0; i <= maxLen; i++) // iterate over all word length lists
+	{
+		node = wordListHeads[i];
+		
+		//check if this length of word needs to be displayed
+		if (hapaxLength != i && hapaxLength != -1) {
+			//nuke the node so nothing is displayed
+			node = NULL;
+		}
+
+		while (node != NULL)
+		{
+			//check if a hapax legomenon
+			if (node->value == 1) {
+				printf("    %s\n", node->key);
+			}
+			node = node->next;
+		}
+	}
 	return 1;
 }
 
@@ -110,7 +136,6 @@ int main(int argc, char **argv)
 {
 	int i, shouldPrintData = 0, didProcessing = 0, printHapaxLength = -1;
 
-	/** TODO: allocate an array of list heads of the required size */
 	LLNode *wordListHeads[MAX_WORD_LEN + 1]; // make the array 1 longer than the MAX_WORD_LEN to account for words of lenth 1-24, and account of words of length 0
 
 	for (i = 1; i < argc; i++)
@@ -140,8 +165,8 @@ int main(int argc, char **argv)
 		else
 		{
 
-			// // Once you have set up your array of word lists, you
-			// // should be able to pass them into this function
+			// Once you have set up your array of word lists, you
+			// should be able to pass them into this function
 			if (tallyWordsInFile(argv[i], wordListHeads, MAX_WORD_LEN) == 0)
 			{
 				fprintf(stderr, "Error: Processing '%s' failed -- exitting\n",
@@ -159,8 +184,8 @@ int main(int argc, char **argv)
 			 */
 			if (shouldPrintData)
 			{
-				// // this should also work once you have allocated the
-				// // array of lists properly
+				// this should also work once you have allocated the
+				// array of lists properly
 				printData(argv[i], wordListHeads, MAX_WORD_LEN);
 			}
 
@@ -184,7 +209,8 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	// TODO: clean up any remaining memory that we have allocated
+	// clean up any remaining memory that we have allocated
+	deleteWordLists(wordListHeads, MAX_WORD_LEN);
 
 	return 0;
 }
