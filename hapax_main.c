@@ -111,6 +111,7 @@ int main(int argc, char **argv)
 	int i, shouldPrintData = 0, didProcessing = 0, printHapaxLength = -1;
 
 	/** TODO: allocate an array of list heads of the required size */
+	LLNode *wordListHeads[MAX_WORD_LEN];
 
 	for (i = 1; i < argc; i++)
 	{
@@ -141,11 +142,12 @@ int main(int argc, char **argv)
 
 			// // Once you have set up your array of word lists, you
 			// // should be able to pass them into this function
-			// if (tallyWordsInFile(argv[i], wordListHeads, MAX_WORD_LEN) == 0) {
-			// 	fprintf(stderr, "Error: Processing '%s' failed -- exitting\n",
-			// 			argv[i]);
-			// 	return 1;
-			// }
+			if (tallyWordsInFile(argv[i], wordListHeads, MAX_WORD_LEN) == 0)
+			{
+				fprintf(stderr, "Error: Processing '%s' failed -- exitting\n",
+						argv[i]);
+				return 1;
+			}
 
 			didProcessing = 1;
 
@@ -159,11 +161,11 @@ int main(int argc, char **argv)
 			{
 				// // this should also work once you have allocated the
 				// // array of lists properly
-				// printData(argv[i], wordListHeads, MAX_WORD_LEN);
+				printData(argv[i], wordListHeads, MAX_WORD_LEN);
 			}
 
 			/** print out all the hapax legomena that we have found */
-			// printHapax(argv[i], wordListHeads, MAX_WORD_LEN);
+			printHapax(argv[i], wordListHeads, MAX_WORD_LEN, printHapaxLength);
 
 			// TODO: clean up any memory that we have allocated in this loop
 		}
