@@ -109,9 +109,17 @@ updateWordInTallyList(LLNode **wordListHeads, int maxLen, char *word)
 	}
 	else
 	{
-		// create a new node for the new word. Since it is a new word set the occourence to 1
-		// then prepend this new node to the top of the LL
-		wordListHeads[strlen(word)] = llPrepend(wordListHeads[strlen(word)], llNewNode(strdup(word), 1));
+		// check to see if the length of the word is less than maxLen
+		// make this check because anything longer than the maxLen will be truncated
+		// to the first n=maxLen characters. Since the truncated word is not found
+		// if the data file, it would not be accurate in saying whether or not is is
+		// a hapax legomenon.
+		if (strlen(word) < maxLen)
+		{
+			// create a new node for the new word. Since it is a new word set the occourence to 1
+			// then prepend this new node to the top of the LL
+			wordListHeads[strlen(word)] = llPrepend(wordListHeads[strlen(word)], llNewNode(strdup(word), 1));
+		}
 	}
 
 	/** return success if no error */

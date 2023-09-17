@@ -11,4 +11,4 @@
 
 ## State of Implementation
 
-    Seemingly complete
+    Complete

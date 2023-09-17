@@ -193,6 +193,7 @@ int main(int argc, char **argv)
 			printHapax(argv[i], wordListHeads, MAX_WORD_LEN, printHapaxLength);
 
 			// TODO: clean up any memory that we have allocated in this loop
+			deleteWordLists(wordListHeads, MAX_WORD_LEN);
 		}
 	}
 
@@ -210,7 +211,6 @@ int main(int argc, char **argv)
 	}
 
 	// clean up any remaining memory that we have allocated
-	deleteWordLists(wordListHeads, MAX_WORD_LEN);
 
 	return 0;
 }
