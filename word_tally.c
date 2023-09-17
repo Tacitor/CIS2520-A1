@@ -36,7 +36,11 @@ int tallyWordsInFile(char *filename, LLNode **wordLists, int maxLen)
 		return 0;
 	}
 
-	/** TODO: ensure that all of the word list heads are NULL */
+	// loop through the word list heads and set all the heads to null
+	for (int i = 0; i <= maxLen; i++)
+	{
+		wordLists[i] = NULL;
+	}
 
 	// read each word from the file using the WordExtractor,
 	// and for each tally how often it has been used in
@@ -73,13 +77,41 @@ static int
 updateWordInTallyList(LLNode **wordListHeads, int maxLen, char *word)
 {
 
-	/* TODO: look up the word in the correct list to see
-	 * if we have already seen it */
+	// grab the list of the length of the word
+	LLNode *wordList = wordListHeads[strlen(word)];
+	// whether or not to keep searching the LL for the current word
+	// 1 for true, and to keep searching
+	// 0 for false, and that the matching word was found in the wordList
+	int doSearchList = 1;
 
-	/* TODO: if the word is in the list, then update the tally
-	 * in the node and we are done so return success */
+	// traverse the list and see if we find the word in it
+	// start at the first node and work down
+	while (doSearchList && wordList != NULL)
+	{
+		// test to see if this is the right word
+		if (strcmp(word, wordList->key) == 0)
+		{
+			// if we have a match stop searching
+			doSearchList = 0;
+		}
+		else
+		{
+			// move one node over
+			wordList = wordList->next;
+		}
+	}
 
-	/** TODO: otherwise add it to the list */
+	if (!doSearchList) // if the word was found in the wordList
+	{
+		// the wordList was stoped at the matching node
+		// so increment the value (number of sightings of the word)
+		wordList->value++;
+	}
+	else 
+	{
+		/** TODO: otherwise add it to the list */
+		// TODO - Create the start of a new list / also add onto an existing list
+	}
 
 	/** return success if no error */
 	return 1;

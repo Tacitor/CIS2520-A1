@@ -111,7 +111,7 @@ int main(int argc, char **argv)
 	int i, shouldPrintData = 0, didProcessing = 0, printHapaxLength = -1;
 
 	/** TODO: allocate an array of list heads of the required size */
-	LLNode *wordListHeads[MAX_WORD_LEN];
+	LLNode *wordListHeads[MAX_WORD_LEN + 1]; // make the array 1 longer than the MAX_WORD_LEN to account for words of lenth 1-24, and account of words of length 0
 
 	for (i = 1; i < argc; i++)
 	{
@@ -172,8 +172,8 @@ int main(int argc, char **argv)
 	}
 
 	// debug the acceptance of command line args
-	//  printf("shouldPrintData: %d\n", shouldPrintData);
-	printf("printHapaxLength: %d\n", printHapaxLength);
+	// printf("shouldPrintData: %d\n", shouldPrintData);
+	// printf("printHapaxLength: %d\n", printHapaxLength);
 	// printf("didProcessing: %d\n", didProcessing);
 
 	if (!didProcessing)
