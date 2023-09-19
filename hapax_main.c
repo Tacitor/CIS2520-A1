@@ -58,10 +58,12 @@ int printData(char *filename, LLNode *wordListHeads[], int maxLen)
 			}
 		}
 	}
+
+	// no errors encoutered, exit status 1
 	return 1;
 }
 
-/** TODO: print out only the hapax legomena in a word list */
+/** print out only the hapax legomena in a word list */
 int printHapax(char *filename, LLNode *wordListHeads[],
 			   int maxLen, int hapaxLength)
 {
@@ -78,21 +80,25 @@ int printHapax(char *filename, LLNode *wordListHeads[],
 	{
 		node = wordListHeads[i];
 		
-		//check if this length of word needs to be displayed
-		if (hapaxLength != i && hapaxLength != -1) {
-			//nuke the node so nothing is displayed
+		// check if this length of word needs to be displayed
+		if (hapaxLength != i && hapaxLength != -1)
+		{
+			// nuke the node so nothing is displayed
 			node = NULL;
 		}
 
 		while (node != NULL)
 		{
-			//check if a hapax legomenon
-			if (node->value == 1) {
+			// check if a hapax legomenon
+			if (node->value == 1)
+			{
 				printf("    %s\n", node->key);
 			}
 			node = node->next;
 		}
 	}
+
+	// no errors encoutered, exit status 1
 	return 1;
 }
 
@@ -192,7 +198,7 @@ int main(int argc, char **argv)
 			/** print out all the hapax legomena that we have found */
 			printHapax(argv[i], wordListHeads, MAX_WORD_LEN, printHapaxLength);
 
-			// TODO: clean up any memory that we have allocated in this loop
+			// clean up any memory that we have allocated in this loop
 			deleteWordLists(wordListHeads, MAX_WORD_LEN);
 		}
 	}
@@ -211,6 +217,7 @@ int main(int argc, char **argv)
 	}
 
 	// clean up any remaining memory that we have allocated
+	// there is none left
 
 	return 0;
 }

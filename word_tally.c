@@ -67,6 +67,7 @@ int tallyWordsInFile(char *filename, LLNode **wordLists, int maxLen)
 	// Close the file when we are done
 	weDeleteExtractor(wordExtractor);
 
+	/** return success if no error */
 	return 1;
 }
 
